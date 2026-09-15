@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>30 Day Challenge Tracker</title>
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
+<header>
+
+    <h1>
+        30 Day Challenge
+    </h1>
+
+    <p>
+        One day at a time. Stay in control.
+    </p>
+
+</header>
+
+
+<!-- ==================================================
+     CHALLENGE SWITCHER
+================================================== -->
+
+<div class="switcher">
+
+
+    <button
+        class="switch-button active"
+        id="pornButton"
+        onclick="switchChallenge('porn')"
+    >
+
+        📖 Read Daily
+
+    </button>
+
+
+    <button
+        class="switch-button"
+        id="masturbationButton"
+        onclick="switchChallenge('masturbation')"
+    >
+
+        🏃 Exercise Daily
+
+    </button>
+
+
+</div>
+
+
+<!-- ==================================================
+     START BOX
+================================================== -->
+
+<div
+    class="start-box"
+    id="startBox"
+>
+
+
+    <p id="startMessage">
+
+        Your challenge hasn't started yet.
+
+    </p>
+
+
+    <button
+        class="start-button"
+        id="startButton"
+        onclick="startChallenge()"
+    >
+
+        Start My 30 Days
+
+    </button>
+
+
+</div>
+
+
+<!-- ==================================================
+     CHALLENGE INFORMATION
+================================================== -->
+
+<div
+    class="challenge-info"
+    id="challengeInfo"
+>
+
+
+    <div class="challenge-info-top">
+
+
+        <div
+            class="challenge-name"
+            id="challengeName"
+        >
+            Read Daily
+        </div>
+
+
+        <div
+            class="challenge-day"
+            id="challengeDay"
+        >
+            Day 1 of 30
+        </div>
+
+
+    </div>
+
+
+    <div class="challenge-dates">
+
+
+        <div class="date-item">
+
+            Started
+
+            <strong id="startDateDisplay">
+                -
+            </strong>
+
+        </div>
+
+
+        <div class="date-item">
+
+            Ends
+
+            <strong id="endDateDisplay">
+                -
+            </strong>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- ==================================================
+     STATS
+================================================== -->
+
+<div class="stats">
+
+
+    <div class="stat">
+
+
+        <div
+            class="stat-number"
+            id="completedCount"
+        >
+            0
+        </div>
+
+
+        <div class="stat-label">
+            Days Completed
+        </div>
+
+
+    </div>
+
+
+    <div class="stat">
+
+
+        <div
+            class="stat-number"
+            id="currentStreak"
+        >
+            0
+        </div>
+
+
+        <div class="stat-label">
+            Current Streak 🔥
+        </div>
+
+
+    </div>
+
+
+    <div class="stat">
+
+
+        <div
+            class="stat-number"
+            id="bestStreak"
+        >
+            0
+        </div>
+
+
+        <div class="stat-label">
+            Best Streak 🏆
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- ==================================================
+     PROGRESS
+================================================== -->
+
+<div class="progress-box">
+
+
+    <div class="progress-header">
+
+
+        <span>
+            30 Day Progress
+        </span>
+
+
+        <span id="percentage">
+            0%
+        </span>
+
+
+    </div>
+
+
+    <div class="progress">
+
+
+        <div
+            class="progress-fill"
+            id="progressFill"
+        ></div>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- ==================================================
+     COMPLETION MESSAGE
+================================================== -->
+
+<div
+    class="completion-message"
+    id="completionMessage"
+>
+
+
+    <h2>
+        🎉 Challenge Complete!
+    </h2>
+
+
+    <p>
+        You completed all 30 days. Great work!
+    </p>
+
+
+</div>
+
+
+<!-- ==================================================
+     CALENDAR
+================================================== -->
+
+<div class="calendar">
+
+
+    <div class="calendar-header">
+
+
+        <div
+            class="calendar-title"
+            id="calendarTitle"
+        >
+            📖 Read Daily
+        </div>
+
+
+        <button
+            class="today-button"
+            onclick="goToToday()"
+        >
+            Today
+        </button>
+
+
+    </div>
+
+
+    <!-- ==================================================
+         LEGEND
+    ================================================== -->
+
+    <div class="legend">
+
+
+        <div class="legend-item">
+
+
+            <div
+                class="legend-box legend-completed"
+            ></div>
+
+
+            Completed
+
+
+        </div>
+
+
+        <div class="legend-item">
+
+
+            <div
+                class="legend-box legend-today"
+            ></div>
+
+
+            Today
+
+
+        </div>
+
+
+        <div class="legend-item">
+
+
+            <div
+                class="legend-box legend-locked"
+            ></div>
+
+
+            Locked
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- ==================================================
+         WEEKDAYS
+    ================================================== -->
+
+    <div class="weekdays">
+
+
+        <div class="weekday">
+            Sun
+        </div>
+
+
+        <div class="weekday">
+            Mon
+        </div>
+
+
+        <div class="weekday">
+            Tue
+        </div>
+
+
+        <div class="weekday">
+            Wed
+        </div>
+
+
+        <div class="weekday">
+            Thu
+        </div>
+
+
+        <div class="weekday">
+            Fri
+        </div>
+
+
+        <div class="weekday">
+            Sat
+        </div>
+
+
+    </div>
+
+
+    <!-- ==================================================
+         DAYS
+    ================================================== -->
+
+    <div
+        class="days"
+        id="calendarDays"
+    ></div>
+
+
+    <!-- ==================================================
+         FOOTER
+    ================================================== -->
+
+    <div class="calendar-footer">
+
+
+        <p class="calendar-note">
+
+            Only today's day can be checked.
+            Future days are locked and previous
+            days cannot be changed.
+
+        </p>
+
+
+    </div>
+
+
+    <!-- ==================================================
+         RESET
+    ================================================== -->
+
+    <div class="buttons">
+
+
+        <button
+            class="reset"
+            onclick="resetChallenge()"
+        >
+
+            Reset This Challenge
+
+        </button>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- ==================================================
+     INFORMATION
+================================================== -->
+
+<div class="info">
+
+
+    <p>
+        Each challenge is saved separately
+        in this browser.
+    </p>
+
+
+    <p>
+        Your progress remains saved even
+        after closing the browser.
+    </p>
+
+
+</div>
+
+
+</div>
+    <script src="script.js"></script>
+
+
+
+</body>
+
+</html>
