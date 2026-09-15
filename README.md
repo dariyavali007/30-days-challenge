@@ -1,4 +1,4 @@
-# 30 Day Challenge Tracker
+# 30 Days Habit Traker
 
 A simple 30-day habit tracker built with HTML, CSS, and JavaScript, featuring daily progress, streaks, and separate challenge calendars.
 
